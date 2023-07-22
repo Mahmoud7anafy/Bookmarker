@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="images/OIP.jpg" type="image/x-icon">
+    <title>Bookmark</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alegreya:wght@400;500;600;700;800;900&family=Amatic+SC:wght@400;700&family=Cedarville+Cursive&family=Inter:wght@200;300;400;500;600;700;800;900&family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Nunito:wght@200;300;400;500;600;700;800;900;1000&family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/bootstrap.min.css">
+    <link rel="stylesheet" href="CSS/all.min.css">
+    <link rel="stylesheet" href="CSS/style.css">
+</head>
+<body>
+
+    <div class="container d-flex justify-content-center align-items-center flex-column bg-light shadow my-5">
+       
+        <h1 class="my-5" >Bookmarker</h1>
+    
+        <div class="bookmark w-100 d-flex justify-content-center  flex-column gap-3 py-5">
+
+            
+            <h2 class="text-center mt-4"> 
+                <i class="fa-solid fa-bookmark"></i>
+                Bookmark your favorite sites
+                <i class="fa-solid fa-bookmark"></i>
+                </h2>
+
+            <div class="w-100 d-flex justify-content-center  flex-column gap-3">
+                
+                <label for="siteName">
+                    <i class="fa-solid fa-book-bookmark pe-3"></i>
+                   Site Name
+                </label>
+                <input type="text" id="siteName" class="form-control" placeholder="Bookmark Name">
+                <small class="text-danger" id="nameExist"></small>
+             </div>
+             <div class="w-100 d-flex justify-content-center  flex-column gap-3 ">
+                 <label for="siteUrl">
+                    <i class="fa-solid fa-link pe-3"></i>
+                    Site URL</label>
+                 <input type="text" id="siteUrl" class="form-control" placeholder="Site URL">
+                 <small class="text-danger" id="invalidURL"></small>
+      
+             </div>
+             <button class="btn btn-success w-25 mx-auto my-5" onclick="addBookmark()">Submit</button>
+            
+        </div>
+
+
+        <table class="w-100 table text-center mx-auto mt-4">
+            <thead>
+               <th>Index</th>
+               <th>Website Name</th>
+               <th>Visit</th>
+               <th>Delete</th>
+            </thead>
+
+            <tbody id="table-content">
+
+                <a href="" ></a>
+              
+            </tbody>
+       </table>
+       
+    </div>
+    
+
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/index.js"></script>
+</body>
+</html>
