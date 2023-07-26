@@ -1,5 +1,7 @@
 var siteName=document.getElementById('siteName');
 var siteURL=document.getElementById('siteUrl')
+var nameExist=document.getElementById('nameExist')
+var invalidURL=document.getElementById('invalidURL')
 var bookmarkList=[]
 
 
@@ -12,9 +14,6 @@ if(localStorage.getItem("BookmarkList"))
 
 
 
-
-
-
 function addBookmark()
 {
   
@@ -23,39 +22,17 @@ function addBookmark()
     Name:siteName.value,
     URL:siteURL.value
   }
- 
-
-  var storeName=[];
-for(var i=0;i<bookmarkList.length;i++)
-{
- 
-  storeName.push(bookmarkList[i].Name)
-  
-}
-console.log(storeName);
-
-if(storeName.includes(siteName.value))
-{
-  document.getElementById('nameExist').innerHTML="This name already exist"
-}
-else
-{
-  if(validateURL())
+  if(validateURL() && validateName())
   {
+   
     bookmarkList.push(bookmark);
     displayBookmark(bookmarkList);
     localStorage.setItem("BookmarkList",JSON.stringify(bookmarkList));
     clearForm();
     
+    
   }
-  else
-  {
-    document.getElementById('invalidURL').innerHTML="Invalid URL"
-  }
-  }
- 
 
- 
 }
 
 
@@ -93,17 +70,57 @@ function clearForm()
 }
 
 
+
+function validateName()
+{
+  
+  var storeName=[];
+  for(var i=0;i<bookmarkList.length;i++)
+  {
+   
+    storeName.push(bookmarkList[i].Name)
+    
+  }
+console.log(storeName);
+
+  
+ 
+  
+  if(storeName.includes(siteName.value))
+  {
+   
+   
+     nameExist.classList.replace('d-none','d-block')
+     siteName.classList.add('is-invalid')
+    return false;
+    
+  }
+  else
+  {
+    
+
+    nameExist.classList.replace('d-block','d-none')
+    siteName.classList.replace('is-invalid','is-valid')
+    return true;
+  }
+
+}
+
 function validateURL()
 {
   var regex= /^(http|https):\/\/[^ "]+$/;
    if(regex.test(siteURL.value))
    {
-    console.log("yes");
+   
+    invalidURL.classList.replace('d-block','d-none');
+    siteURL.classList.replace('is-invalid','is-valid')
     return true
+
    }
    else
    {
-    console.log("no");
+     invalidURL.classList.replace('d-none','d-block');
+     siteURL.classList.add('is-invalid')
     return false
    }
 }
